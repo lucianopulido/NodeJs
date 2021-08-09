@@ -1,6 +1,4 @@
-html
-    head
-        title Mi primera pagina con express 
-    body 
-        form(action="/", method="POST")
-            input(type="submit", value="Enviar")
+extends ./layout.jade
+block contenido
+    h1 Bienvenidos a FotoFacilito
+    a(href="/login") Iniciar sesión
