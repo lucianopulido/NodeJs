@@ -11,8 +11,9 @@ const crearArchivo = async (num = 5) => {
       salida += `${num}x${i} = ${num * i}\n`;
     }
 
+    console.log(salida);
     fs.writeFileSync(`tabla-${num}.txt`, salida);
-
+    
     return `tabla-${num}`;
   } catch (err) {
     throw err;
