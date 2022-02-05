@@ -1,12 +1,12 @@
 const fs = require("fs");
 const colors  = require('colors');
 
-const crearArchivo = async (base, listar = false) => {
+const crearArchivo = async (base, listar = false, limite = 10) => {
   try {
     salida = "";
 
-    for (let i = 1; i <= 10; i++) {
-      salida += `${base}${'x'.green}${i} ${'='.green} ${base * i}\n`;
+    for (let i = 1; i <= limite; i++) {
+      salida += `${base}${'x'}${i} ${'='} ${base * i}\n`;
     }
 
     if (listar) {

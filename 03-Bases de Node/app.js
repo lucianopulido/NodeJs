@@ -4,6 +4,6 @@ const colors  = require('colors');
 
 console.clear();
 
-crearArchivo(argv.base, argv.listar)
+crearArchivo(argv.base, argv.listar, argv.hasta)
   .then((nombreArchivo) => console.log(nombreArchivo.rainbow, "creado"))
   .catch((err) => console.log(err));
