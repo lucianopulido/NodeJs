@@ -19,7 +19,7 @@ const main = async () => {
         break;
 
       case "2":
-        console.log(tareas.listado);
+        console.log(tareas.getTareas);
         break;
 
       case "3":
