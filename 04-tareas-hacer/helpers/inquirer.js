@@ -32,8 +32,8 @@ const preguntas = [
         name: "6. Borrar tarea",
       },
       {
-        value: "0",
-        name: "0. Salir",
+        value: "7",
+        name: "7. Salir",
       },
     ],
   },
@@ -58,11 +58,31 @@ const pausa = async () => {
       message: `Presione ${"enter".green} para continuar`,
     },
   ];
-  console.log('\n');
+  console.log("\n");
   await inquirer.prompt(question);
+};
+
+const leerInput = async (message) => {
+  const question = [
+    {
+      type: "input",
+      name: "desc",
+      message: message,
+      validate(value) {
+        if (value.length === 0) {
+          return "Por favor ingrese un valor";
+        }
+        return true;
+      },
+    },
+  ];
+
+  const { desc } = await inquirer.prompt(question);
+  return desc;
 };
 
 module.exports = {
   inquirerMenu,
   pausa,
+  leerInput,
 };

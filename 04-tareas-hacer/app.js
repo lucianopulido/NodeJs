@@ -1,24 +1,45 @@
-require('colors');
-const {inquirerMenu, pausa} = require('./helpers/inquirer');
-const Tarea = require('./models/tarea');
-const Tareas = require('./models/tareas');
+require("colors");
+const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
+const Tareas = require("./models/tareas");
 console.clear();
 
 const main = async () => {
   let opt = "";
 
+  const tareas = new Tareas();
+
   do {
-    //opt = await inquirerMenu();
-    //console.log("La opción seleccionada es: ", opt);
+    opt = await inquirerMenu();
 
-    const tarea = new Tarea('Comprar comida');
-    const tareas = new Tareas();
+    switch (opt) {
+      case "1":
+        //crear opción
+        const desc = await leerInput("Descripción:");
+        tareas.crearTarea(desc);
+        break;
 
-    tareas.listado[tarea.id] = tarea;
-    console.log(tareas);
+      case "2":
+        console.log(tareas.listado);
+        break;
+
+      case "3":
+        break;
+
+      case "4":
+        break;
+
+      case "5":
+        break;
+
+      case "6":
+        break;
+
+      case "0":
+        break;
+    }
+
     await pausa();
-   
-  } while (opt !== "0");
+  } while (opt !== "7");
 };
 
 main();
