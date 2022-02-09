@@ -1,5 +1,6 @@
 require("colors");
 const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
+const { guardarDB, leerDB } = require("./helpers/databaseaccess");
 const Tareas = require("./models/tareas");
 console.clear();
 
@@ -8,6 +9,10 @@ const main = async () => {
 
   const tareas = new Tareas();
 
+  if (leerDB()) {
+  }
+
+  await pausa();
   do {
     opt = await inquirerMenu();
 
@@ -38,6 +43,7 @@ const main = async () => {
         break;
     }
 
+    guardarDB(tareas.getTareas);
     await pausa();
   } while (opt !== "7");
 };

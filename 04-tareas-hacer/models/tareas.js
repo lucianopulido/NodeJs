@@ -2,6 +2,7 @@ const Tarea = require("./tarea");
 
 class Tareas {
   listado = {};
+  
   constructor() {
     this.listado = {};
   }
