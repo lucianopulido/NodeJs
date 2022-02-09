@@ -29,9 +29,11 @@ const main = async () => {
         break;
 
       case "3":
+        tareas.listarTareasEstado(true);
         break;
 
       case "4":
+        tareas.listarTareasEstado(false);
         break;
 
       case "5":
