@@ -1,5 +1,5 @@
 const Tarea = require("./tarea");
-
+require("colors");
 class Tareas {
   listado = {};
 
@@ -24,6 +24,17 @@ class Tareas {
   cargarTareasFromArray(tareas = []) {
     tareas.forEach((tarea) => {
       this.listado[tarea.id] = tarea;
+    });
+  }
+
+  listadoCompleto() {
+    console.log();
+    this.getTareas.forEach((tarea, i) => {
+      const indice = `${i + 1}.`;
+      const { descripcion, completadoEn } = tarea;
+      const estado = completadoEn ? "Completada".green : "Pendiente".red;
+
+      console.log(`${indice.green} ${descripcion}::${estado}\n`);
     });
   }
 }
