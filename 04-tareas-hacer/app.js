@@ -9,10 +9,11 @@ const main = async () => {
 
   const tareas = new Tareas();
 
-  if (leerDB()) {
+  const tareasDB = leerDB();
+  if (tareasDB) {
+    tareas.cargarTareasFromArray(tareasDB);
   }
 
-  await pausa();
   do {
     opt = await inquirerMenu();
 

@@ -2,7 +2,7 @@ const Tarea = require("./tarea");
 
 class Tareas {
   listado = {};
-  
+
   constructor() {
     this.listado = {};
   }
@@ -19,6 +19,12 @@ class Tareas {
       listadoArray.push(tarea);
     });
     return listadoArray;
+  }
+
+  cargarTareasFromArray(tareas = []) {
+    tareas.forEach((tarea) => {
+      this.listado[tarea.id] = tarea;
+    });
   }
 }
 
