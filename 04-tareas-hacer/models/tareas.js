@@ -12,6 +12,12 @@ class Tareas {
     this.listado[tarea.id] = tarea;
   }
 
+  borrarTarea(id = "") {
+    if (this.listado[id]) {
+      delete this.listado[id];
+    }
+  }
+
   get getTareas() {
     const listadoArray = [];
     Object.keys(this.listado).forEach((key) => {
@@ -39,7 +45,6 @@ class Tareas {
   }
 
   listarTareasEstado(completadas = true) {
-    
     console.log();
     let contador = 0;
     this.getTareas.forEach((tarea) => {
@@ -50,14 +55,16 @@ class Tareas {
         if (completadoEn) {
           contador += 1;
           console.log(
-            `${(contador.toString()+'.').green} ${descripcion}::${completadoEn}\n`
+            `${
+              (contador.toString() + ".").green
+            } ${descripcion}::${completadoEn}\n`
           );
         }
       } else {
         if (!completadoEn) {
           contador += 1;
           console.log(
-            `${(contador.toString()+'.').green} ${descripcion}::${estado}\n`
+            `${(contador.toString() + ".").green} ${descripcion}::${estado}\n`
           );
         }
       }
