@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45d5312a-b960-4a1f-9ee9-cf15da660dea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/utils/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/socket-chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/socket-chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/sockets/socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/sockets/socket.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +57,9 @@
       <workItem from="1660264133993" duration="2642000" />
       <workItem from="1660270633597" duration="632000" />
       <workItem from="1660312189788" duration="8196000" />
+      <workItem from="1660346748235" duration="379000" />
+      <workItem from="1660488811179" duration="929000" />
+      <workItem from="1660505731016" duration="2715000" />
     </task>
     <servers />
   </component>

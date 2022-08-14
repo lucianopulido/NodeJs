@@ -16,12 +16,11 @@ io.on('connection', (client) => {
             })
         }
 
-        client.join('data.sala')
+        client.join(usuario.sala)
 
         let personas = usuarios.agregarPersona(client.id, usuario.nombre, usuario.sala)
         client.broadcast.to(usuario.sala).emit('listaPersona', usuarios.getPersonasPorSala(usuario.sala))
-        callback(personas)
-        console.log(usuario)
+        callback(usuarios.getPersonasPorSala(usuario.sala))
     })
 
     client.on('crearMensaje', (data) => {
@@ -40,9 +39,7 @@ io.on('connection', (client) => {
 
     // Mensajes privados
     client.on('mensajePrivado', (mensaje) => {
-        0
         let persona = usuarios.getPersona(client.id)
-
         client.broadcast.to(mensaje.para).emit('mensajePrivado', crearMensaje(persona.nombre, mensaje.mensaje))
     })
 
