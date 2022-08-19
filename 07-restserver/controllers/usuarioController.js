@@ -2,8 +2,10 @@ const {request, response} = require('express')
 const Usuario = require('../models/usuario')
 const bcrypt = require('bcryptjs');
 
-const usuariosGet = (request, response) => {
-    response.json({msg: "get API - controlador"})
+const usuariosGet = async (request, response) => {
+    const {limite = 5, desde = 0} = request.query
+    const usuarios = await Usuario.find().skip(desde).limit(limite)
+    response.json({usuarios})
 }
 
 const usuariosPost = async (request, response) => {
@@ -16,14 +18,20 @@ const usuariosPost = async (request, response) => {
 
     // Guardar en la BD
     await usuario.save()
-
-    response.json({
-        usuario
-    })
+    response.json(usuario)
 }
 
-const usuariosPut = (request, response) => {
-    response.json({msg: "put API - controlador"})
+const usuariosPut = async (request, response) => {
+
+    const {id} = request.params
+    const {_id, password, google, correo, ...resto} = request.body
+    if (password) {
+        const salt = bcrypt.genSaltSync()
+        resto.password = bcrypt.hashSync(password, salt)
+    }
+
+    const usuario = await Usuario.findByIdAndUpdate(id, resto)
+    response.json({usuario})
 }
 
 const usuariosDelete = (request, response) => {
