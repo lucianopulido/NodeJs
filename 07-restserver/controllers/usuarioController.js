@@ -4,8 +4,13 @@ const bcrypt = require('bcryptjs');
 
 const usuariosGet = async (request, response) => {
     const {limite = 5, desde = 0} = request.query
-    const usuarios = await Usuario.find().skip(desde).limit(limite)
-    response.json({usuarios})
+
+    const usuariosPromise = Usuario.find({estado: true}).skip(desde).limit(limite)
+    const totalPromise = Usuario.countDocuments({estado: true})
+
+    const [total, usuarios] = await Promise.all([totalPromise, usuariosPromise])
+
+    response.json({total, usuarios})
 }
 
 const usuariosPost = async (request, response) => {
@@ -34,8 +39,14 @@ const usuariosPut = async (request, response) => {
     response.json({usuario})
 }
 
-const usuariosDelete = (request, response) => {
-    response.json({msg: "delete API - controlador"})
+const usuariosDelete = async (request, response) => {
+    const {id} = request.params
+    // eliminación fisica
+    //const usuario = await Usuario.findByIdAndDelete(id)
+
+    //eliminación lógica
+    const usuario = await Usuario.findByIdAndUpdate(id, {estado: false})
+    response.json({usuario})
 }
 
 const usuariosPatch = (request, response) => {
